@@ -1,0 +1,26 @@
+{% extends 'owner/base.html' %}
+
+
+{% block content %}
+    {% load crispy_forms_tags %}
+        <div class="container mt-4">
+        <div class="row">
+            <div class="col-lg-6 mx-auto mt-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="display-5 text-center text-success"><b><i>Add Brand</i></b></h5>
+                        <form action="{% url 'shop:addbrand' %}" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <table class="table">
+                                {{ forms|crispy }}
+                            </table>
+                            <input type="submit" class="btn btn-success btn-block">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+{% endblock %}

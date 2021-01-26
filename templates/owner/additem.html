@@ -1,0 +1,26 @@
+{% extends 'owner/base.html' %}
+
+
+{% block content %}
+    {% load crispy_forms_tags %}
+<div class="container">
+<div class="row">
+    <div class="col-lg-8 mx-auto mt-2">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="display-5 text-center text-success mt-1 mb-3" ><b><i>Add Item</i></b></h5>
+                <form action="{% url 'shop:additem' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <table class="table">
+                        {{ form|crispy }}
+                    </table>
+                    <input type="submit" class="btn btn-success btn-block">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+{% endblock %}

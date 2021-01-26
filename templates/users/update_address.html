@@ -1,0 +1,26 @@
+{% extends 'users/base.html' %}
+
+
+{% block content %}
+    {% load crispy_forms_tags %}
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="display-5 text-success text-center"><i>Update Address</i></h5>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <table class="table">
+                                {{ form|crispy }}
+                            </table>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-success btn-block form-control">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

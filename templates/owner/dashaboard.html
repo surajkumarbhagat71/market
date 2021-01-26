@@ -1,0 +1,52 @@
+{% extends 'owner/base.html' %}
+
+
+{% block content %}
+    <div class="container mt-2">
+    <div class="row">
+        <div class="col-lg-5 mx-auto mt-3">
+            <div class="card">
+                <div class="card-body shadow-sm border-0">
+                    <h5 class="text-center text-success">All Request Order</h5>
+                    <h5 class="text-center mt-2">{{ all_request_order }}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5 mx-auto  mt-3">
+            <div class="card">
+                <div class="card-body shadow-sm border-0">
+                    <h5 class="text-center text-success">All  Order</h5>
+                    <h5 class="text-center mt-2">{{ all_order }}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5 mx-auto  mt-3">
+            <div class="card">
+                <div class="card-body shadow-sm border-0">
+                    <h5 class="text-center text-success">all Add Product</h5>
+                    <h5 class="text-center mt-2">{{ all_add_item }}</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-5 mx-auto  mt-3">
+            <div class="card">
+                <div class="card-body shadow-sm border-0">
+                    <h5 class="text-center text-success">all Brand</h5>
+                    <h5 class="text-center mt-2">{{ allbrand }}</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-5  mt-3 mx-auto">
+            <div class="card">
+                <div class="card-body shadow-sm border-0">
+                    <h5 class="text-center text-success">all Category</h5>
+                    <h5 class="text-center mt-2">{{ allcategory }}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

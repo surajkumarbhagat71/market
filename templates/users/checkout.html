@@ -1,0 +1,54 @@
+{% extends 'users/base.html' %}
+
+
+{% block content %}
+    {% load crispy_forms_tags %}
+    <div class="container-fluid mt-2">
+        <div class="row">
+          <div class="col-lg-12">
+                <div class="row">
+                    {% for x in address %}
+                    <div class="col-lg-4">
+                        <div class="card bg-secondary text-white">
+                            <div class="card-body">
+                                <form action="" method="post">
+                                    {% csrf_token %}
+                                    <p>Name : {{ x.name }}</p>
+                                    <p>Contact : {{ x.contact }}</p>
+                                    <p>Email : {{ x.email }}</p>
+                                    <p>Address : {{ x.city }} , {{ x.address }}</p>
+                                    <p>Landmark : {{ x.landmark }}</p>
+                                    <input  type="hidden"  name="save_address" value="{{ x.address_id }}">
+                                    <input type="submit" class="btn btn-warning " value="Deliver to Address">
+                                </form>
+                                <span>
+                                    <a href="{% url 'shop:update' x.address_id %}" class="btn btn-primary mt-2">Update</a>
+                                    <a href="{% url 'shop:deleteadress' x.address_id %}" class="btn btn-danger mt-2">Delete</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+
+              <h4 class="display-4 mt-3 mb-2 text-center text-uppercase text-success"><b>Add New Address</b></h4>
+              <div class="row">
+                  <div class="col-lg-8 mx-auto">
+                            <div class="card">
+                                <div class="card-body">
+                                    <form action="" method="post">
+                                        {% csrf_token %}
+                                        <table class="table">
+                                            {{ forms|crispy }}
+                                        </table>
+                                        <input type="submit" class="btn btn-success btn-block">
+                                    </form>
+                                </div>
+                            </div>
+                      </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

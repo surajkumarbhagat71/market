@@ -1,0 +1,38 @@
+{% extends 'owner/base.html' %}
+
+
+{% block content %}
+<div class="container">
+<div class="row">
+    <div class="col-lg-10 mx-auto mt-3">
+        <div class="card">
+            <div class="card-body">
+                <table class="table">
+                    <tr>
+                        <td>Pro Img</td>
+                        <td>Pro Name</td>
+                        <td>Brand</td>
+                        <td>Category</td>
+                        <td>Price</td>
+                        <td>Discount Price</td>
+                        <td>Action</td>
+                    </tr>
+                    {% for x in item %}
+                        <tr>
+                            <td><img src="{{ x.img_one.url }}" alt=""  style="height:100px;width:100px;border-radius:30px;"></td>
+                             <td>{{ x.title }}</td>
+                             <td>{{ x.brand }}</td>
+                             <td>{{ x.category }}</td>
+                             <td>{{ x.price }}</td>
+                             <td>{{ x.discoutn_price }}</td>
+                            <td><a href="{% url 'shop:deleteitem' x.item_id %}" class="btn btn-danger">Delete</a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}

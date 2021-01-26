@@ -1,0 +1,52 @@
+{% extends 'users/base.html' %}
+
+
+{% block content %}
+    <div class="container mt-2">
+    <div class="row">
+
+    {% for main  in order %}
+
+        <div class="col-lg-10 mx-auto">
+            {% for o in main.items.all %}
+        <div class="card mb-3">
+        <div class="card-header">
+            <span class="float-left"> Order Id: 00{{ main.order_id }}000000000000000</span>
+            <span class="float-right">Order Date:{{ main.order_date }}</span>
+        </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <img src="{{ o.itme.img_one.url }}" alt="" class="card-img-top">
+                    </div>
+                    <div class="col-lg-9">
+                        <h2>{{ o.itme.title }}</h2>
+                        <h2>{{ o.itme.brand.brand_name }}</h2>
+                        <h5 class="display-5">Qty : {{ o.qty }}</h5>
+
+
+                    <p>
+                        {% if o.itme.discoutn_price %}
+                            <del><span class="small">₹ {{ o.get_total_price }}</span></del>
+                            <span class="small text-success">₹ {{ o.get_discount_price }}</span>
+                        {% else %}
+                            <span class="small font-weight-bold">₹ {{ o.get_total_price }}</span>
+                        {% endif %}
+                    </p>
+
+                    {% if main.status is  True %}
+                        <h5 class="display-5 text-success">STATUS : Deliver</h5>
+                        {% else %}
+                        <h5 class="display-5 text-danger">STATUS : Not Deliver</h5>
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+
+{% endblock %}

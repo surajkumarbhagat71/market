@@ -1,0 +1,29 @@
+{% extends 'owner/base.html' %}
+
+
+{% block content %}
+    <div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-6 mx-auto mt-4">
+            <div class="card">
+                <div class="card">
+                    <table class="table">
+                        <tr>
+                            <td>Category Name</td>
+                            <td>Action</td>
+                        </tr>
+
+                        {% for x in allcategory %}
+                            <tr>
+                                <td>{{ x.title }}</td>
+                                <td><a href="{% url 'shop:deletecategory' x.category_id %}" class="btn btn-danger">Delete</a></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

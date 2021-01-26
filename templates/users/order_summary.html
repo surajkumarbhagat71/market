@@ -1,0 +1,56 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+   <div class="container-fluid m-3 p-0">
+        <div class="row no-gutters">
+            {% for x in order.items.all %}
+            <div class="col-lg-7 mr-auto mt-2">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row no-gutters">
+                            <div class="col-lg-4">
+                                <div class="card border-0 shadow-sm">
+                                    <img src="{{ x.itme.img_one.url }}" alt="" class="card-img-top">
+                                </div>
+                            </div>
+                            <div class="col-lg-5 ml-5">
+                                <h5 class="display-5"> Title : {{ x.itme.title }}</h5>
+                                <h5 class="display-5"> Brand : {{ x.itme.brand.brand_name }}</h5>
+                                <p>Qty: {{ x.qty }}</p>
+                                {% if x.itme.discoutn_price %}
+                                    <p><del>Rs. {{ x.get_total_price }}</del>
+                                      <samp class="text-success">Rs.{{ x.get_discount_price }}</samp>
+                                    </p>
+                                 {% else %}
+                                    <p>Rs.{{ x.get_total_price }}</p>
+                                {% endif %}
+
+                            <div>
+                                <span><a href="{% url 'shop:addtocart' x.itme.item_id %}" class="btn btn-sm btn-success ml-1">+</a></span>
+                                <span class=" ml-1 mr-1"><b>{{ x.qty }}</b></span>
+                                <span><a href="{% url 'shop:remove_item' x.itme.item_id %}" class="btn btn-danger btn-sm">-</a></span><br><br>
+                                <span><a href="{% url 'shop:remove' x.itme.item_id %}" class="btn btn-danger btn-sm">Delete</a></span>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           {% endfor %}
+
+                <div class="col-lg-4 mx-auto">
+                     <div class="card">
+                         <div class="card-body">
+                            <h5 class="display-5 mt-1 text-center">Total Amount : {{ order.get_total }}</h5>
+
+                             <div class="row mt-3">
+                                 <div class="col-lg-6 mx-auto "><a href="{% url 'shop:checkout' %}" class="btn btn-success ">Checkout</a></div>
+                                 <div class="col-lg-6 mx-auto "><a href="{% url 'shop:home' %}" class="btn-primary btn ">Continue Shoping</a></div>
+                             </div>
+                         </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+{% endblock %}

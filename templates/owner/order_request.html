@@ -1,0 +1,36 @@
+{% extends 'owner/base.html' %}
+
+
+{% block content %}
+<div class="container">
+<div class="row">
+    <div class="col-lg-10 mx-auto mt-3">
+        <div class="card">
+            <div class="card-body">
+                <table class="table">
+                    <tr>
+                        <td>Pro Img</td>
+                        <td>Pro Name</td>
+                        <td>User</td>
+                        <td>Email</td>
+                        <td>Action</td>
+                    </tr>
+                    {% for x in request_order %}
+                        <tr>
+                             <td><img src="{{ x.items.itme.img_one.url  }}" alt="" ></td>
+                             <td>{{ x.items.itme.title  }}</td>
+                             <td>{{ x.user }}</td>
+                             <td>{{ x.user.email }}</td>
+                            <td><a href="{% url 'shop:aproveorder' x.order_id %}" class="btn btn-success">Aprove</a></td>
+                        </tr>
+
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}
